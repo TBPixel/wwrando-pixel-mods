@@ -387,8 +387,8 @@ class Randomizer:
         tweaks.remove_title_and_ending_videos(self)
       if self.options.get("remove_music"):
         patcher.apply_patch(self, "remove_music")
-      if self.map_select:
-        patcher.apply_patch(self, "map_select")
+      # if self.map_select:
+      #   patcher.apply_patch(self, "map_select")
       if IS_RUNNING_FROM_SOURCE or "BETA" in VERSION_WITHOUT_COMMIT:
         tweaks.enable_developer_mode(self)
       if self.heap_display:
@@ -396,6 +396,9 @@ class Randomizer:
       
       if self.test_room_args is not None:
         tweaks.test_room(self)
+      
+      # Pixel's Mods
+      patcher.apply_patch(self, "left_dpad_speed_boost")
     options_completed += 1
     
     yield("Randomizing...", options_completed)
